@@ -1,1 +1,1 @@
-[Flask tutorial](https://flask.palletsprojects.com/en/1.1.x/tutorial/)
+[Flask tutorial - database](https://flask.palletsprojects.com/en/1.1.x/tutorial/database/)
