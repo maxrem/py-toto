@@ -6,12 +6,13 @@ services:
         environment:
             - FLASK_APP=flaskr
             - FLASK_ENV=development
+            - REDIS_URL=redis://:@redis:6379/0
         depends_on:
             - redis
-        network_mode: host
+        volumes:
+            - .:/code
+        ports:
+        - 5000:5000
 
     redis:
         image: redis:5.0-alpine
-
-    sqlite:
-        image: keinos/sqlite3

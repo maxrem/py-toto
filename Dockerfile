@@ -1,7 +1,4 @@
-FROM python:3.8-alpine
-
-ADD . /code
-WORKDIR /code
+FROM python:3.7-alpine
 
 RUN pip install -r requirements.txt
 
