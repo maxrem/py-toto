@@ -1,7 +1,9 @@
 import os
 
-from flask import Flask
+from flask import (Flask, g)
 from flask_redis import FlaskRedis
+
+from . import auth
 
 
 def create_app(test_config=None):
@@ -11,7 +13,7 @@ def create_app(test_config=None):
         SECRET_KEY='dev',
         REDIS_URL=os.environ['REDIS_URL']
     )
-    redis_client = FlaskRedis(app=app)
+    g.redis_client = FlaskRedis(app=app)
 
     if test_config is None:
         app.config.from_pyfile('config.py', silent=True)
@@ -23,11 +25,6 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    # a simple page that says hello
-    @app.route('/hello')
-    def hello():
-        redis_client.sadd('test', 'test value')
-
-        return redis_client.spop('test')
+    app.register_blueprint(auth.bp)
 
     return app
