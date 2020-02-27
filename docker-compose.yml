@@ -6,6 +6,7 @@ services:
     environment:
       - FLASK_APP=toto
       - FLASK_ENV=development
+      - SECRET_KEY=abc123
     volumes:
       - .:/code
     ports:
