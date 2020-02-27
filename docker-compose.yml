@@ -4,18 +4,12 @@ services:
   web:
     build: .
     environment:
-      - FLASK_APP=flaskr
+      - FLASK_APP=toto
       - FLASK_ENV=development
-      - REDIS_URL=redis://:@redis:6379/0
     volumes:
       - .:/code
     ports:
       - "5000:5000"
-    networks:
-      - web
-
-  redis:
-    image: redis:5.0-alpine
     networks:
       - web
 
